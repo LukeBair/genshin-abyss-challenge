@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
 <title>Abyss Challenge Roller</title>
 <meta name="description" content="Roll random team-building rules for a Genshin Impact Spiral Abyss challenge run.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="themes/tones.css">
+<link rel="stylesheet" id="theme" href="themes/editorial.css">
+<style>
+  #themes { position: fixed; z-index: 99; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; gap: 2px; padding: 4px; background: rgba(0,0,0,.82); border-radius: 22px; font: 12px/1 system-ui, sans-serif; }
+  #themes button { min-height: 32px; padding: 0 12px; border: 0; border-radius: 16px; background: none; color: #ddd; cursor: pointer; font: inherit; }
+  #themes button[aria-pressed="true"] { background: #fff; color: #000; }
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -41,6 +43,13 @@
 
   <footer>Fan-made and unofficial. Not affiliated with HoYoverse. Genshin Impact is a trademark of its owners.</footer>
 </main>
+
+<nav id="themes" aria-label="Design options (temporary)">
+  <button data-t="editorial">1 Editorial</button>
+  <button data-t="ingame">2 In-game</button>
+  <button data-t="terminal">3 Terminal</button>
+  <button data-t="cards">4 Cards</button>
+</nav>
 <script type="module" src="src/app.js"></script>
 </body>
 </html>
