@@ -1,0 +1,6 @@
+{
+  "name": "genshin-abyss-challenge",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test" }
+}

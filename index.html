@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abyss Challenge Roller</title>
+<meta name="description" content="Roll random team-building rules for a Genshin Impact Spiral Abyss challenge run.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Abyss Challenge</h1>
+  <p class="sub">Roll the rules, build your own team, clear the Abyss.</p>
+  <label class="count">Rules
+    <select id="count">
+      <option value="2">2</option>
+      <option value="3" selected>3</option>
+      <option value="4">4</option>
+    </select>
+  </label>
+  <ol id="list"></ol>
+  <div class="actions">
+    <button id="roll" class="primary">Roll all</button>
+    <button id="copy">Copy link</button>
+  </div>
+</main>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>
