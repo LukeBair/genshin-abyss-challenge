@@ -101,20 +101,6 @@ copyBtn.onclick = async () => {
   setTimeout(() => (copyBtn.textContent = 'Copy link'), 1500);
 };
 
-// Temporary design switcher
-const THEMES = ['editorial', 'ingame', 'terminal', 'cards'];
-const themeLink = document.getElementById('theme');
-function setTheme(t) {
-  if (!THEMES.includes(t)) t = THEMES[0];
-  themeLink.href = `themes/${t}.css`;
-  try { localStorage.setItem('theme', t); } catch {}
-  document.querySelectorAll('#themes button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.t === t)));
-}
-let savedTheme = null;
-try { savedTheme = localStorage.getItem('theme'); } catch {}
-document.querySelectorAll('#themes button').forEach((b) => (b.onclick = () => setTheme(b.dataset.t)));
-setTheme(new URLSearchParams(location.search).get('t') || savedTheme || THEMES[0]);
-
 setCount(count);
 sync();
 render('all');

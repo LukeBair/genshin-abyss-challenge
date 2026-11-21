@@ -1,5 +1,0 @@
-/* Category colours shared by every theme. Themes decide how --tone is used. */
-.tone-pyro { --tone: #e2623e; } .tone-hydro { --tone: #3aa8e6; } .tone-electro { --tone: #9a6ee8; }
-.tone-cryo { --tone: #7fd0e6; } .tone-anemo { --tone: #4dc9a4; } .tone-geo { --tone: #e0b030; }
-.tone-dendro { --tone: #8cc43a; } .tone-rarity { --tone: #d19a1f; } .tone-weapon { --tone: #78879a; }
-.tone-role { --tone: #5e9a6a; } .tone-twist { --tone: #9a5a98; }
