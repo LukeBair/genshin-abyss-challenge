@@ -40,34 +40,32 @@ function render(animate = null) {
   ids.forEach((id, i) => {
     const c = byId.get(id);
     const li = document.createElement('li');
-    if (c.group.startsWith('el-')) li.classList.add(`tone-${c.group.slice(3)}`);
+    li.classList.add(`tone-${c.group.startsWith('el-') ? c.group.slice(3) : kindOf(c.group).toLowerCase()}`);
     li.classList.toggle('locked', !!locked[i]);
     if (animate === 'all' || animate === i) {
       li.classList.add('reveal');
       li.style.setProperty('--i', animate === 'all' ? i : 0);
     }
 
-    const num = document.createElement('div');
-    num.className = 'num';
-    num.textContent = ROMAN[i];
-
-    const kind = document.createElement('div');
-    kind.className = 'kind';
-    kind.textContent = kindOf(c.group);
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    const numeral = document.createElement('b');
+    numeral.textContent = ROMAN[i];
+    meta.append(numeral, kindOf(c.group));
 
     const text = document.createElement('div');
     text.className = 'text';
     text.textContent = c.text;
 
     const lock = document.createElement('button');
-    lock.className = 'icon';
-    lock.append(icon(locked[i] ? 'i-lock-closed' : 'i-lock'));
+    lock.className = 'seal';
+    lock.append(icon('star'));
     lock.setAttribute('aria-pressed', String(!!locked[i]));
-    lock.setAttribute('aria-label', locked[i] ? 'Unlock rule' : 'Lock rule');
+    lock.setAttribute('aria-label', locked[i] ? 'Break seal (unlock rule)' : 'Seal rule (lock it)');
     lock.onclick = () => { locked[i] = !locked[i]; render(); };
 
     const re = document.createElement('button');
-    re.className = 'icon';
+    re.className = 'reroll';
     re.append(icon('i-reroll'));
     re.setAttribute('aria-label', 'Reroll this rule');
     re.onclick = () => { ids = rerollOne(ids, i); locked[i] = false; sync(); render(i); };
@@ -76,7 +74,7 @@ function render(animate = null) {
     ctrl.className = 'ctrl';
     ctrl.append(lock, re);
 
-    li.append(num, kind, text, ctrl);
+    li.append(meta, text, ctrl);
     list.append(li);
   });
 }
@@ -101,16 +99,18 @@ copyBtn.onclick = async () => {
   setTimeout(() => (copyBtn.textContent = 'Copy link'), 1500);
 };
 
-// Starfield
-const sky = document.getElementById('sky');
-for (let i = 0; i < 70; i++) {
-  const s = document.createElement('i');
-  s.style.left = `${Math.random() * 100}%`;
-  s.style.top = `${Math.random() * 100}%`;
-  s.style.setProperty('--d', `${3 + Math.random() * 4}s`);
-  s.style.setProperty('--delay', `${Math.random() * 4}s`);
-  if (Math.random() < 0.2) { s.style.width = s.style.height = '3px'; }
-  sky.append(s);
+// Dust motes drifting through the light
+const dust = document.getElementById('dust');
+for (let i = 0; i < 28; i++) {
+  const m = document.createElement('i');
+  const size = 2 + Math.random() * 3;
+  m.style.left = `${Math.random() * 100}%`;
+  m.style.width = m.style.height = `${size}px`;
+  m.style.setProperty('--d', `${12 + Math.random() * 14}s`);
+  m.style.setProperty('--delay', `${-Math.random() * 20}s`);
+  m.style.setProperty('--x', `${(Math.random() - 0.5) * 120}px`);
+  m.style.setProperty('--o', `${0.25 + Math.random() * 0.45}`);
+  dust.append(m);
 }
 
 setCount(count);
