@@ -99,20 +99,6 @@ copyBtn.onclick = async () => {
   setTimeout(() => (copyBtn.textContent = 'Copy link'), 1500);
 };
 
-// Dust motes drifting through the light
-const dust = document.getElementById('dust');
-for (let i = 0; i < 28; i++) {
-  const m = document.createElement('i');
-  const size = 2 + Math.random() * 3;
-  m.style.left = `${Math.random() * 100}%`;
-  m.style.width = m.style.height = `${size}px`;
-  m.style.setProperty('--d', `${12 + Math.random() * 14}s`);
-  m.style.setProperty('--delay', `${-Math.random() * 20}s`);
-  m.style.setProperty('--x', `${(Math.random() - 0.5) * 120}px`);
-  m.style.setProperty('--o', `${0.25 + Math.random() * 0.45}`);
-  dust.append(m);
-}
-
 setCount(count);
 sync();
 render('all');

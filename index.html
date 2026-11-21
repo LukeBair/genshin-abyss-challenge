@@ -17,32 +17,14 @@
   <symbol id="i-reroll" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M20 12a8 8 0 1 1-2.6-5.9M20 4v5h-5"/></symbol>
 </svg>
 
-<div class="beam" aria-hidden="true"></div>
-<div class="dust" id="dust" aria-hidden="true"></div>
-
 <main>
   <header>
-    <svg class="astrolabe" viewBox="0 0 200 200" aria-hidden="true">
-      <g class="ring-a" fill="none" stroke="currentColor">
-        <circle cx="100" cy="100" r="96" stroke-width="1.5"/>
-        <circle cx="100" cy="100" r="90" stroke-width="7" stroke-dasharray="1.2 9.92" opacity=".85"/>
-        <circle cx="100" cy="100" r="82" stroke-width="1"/>
-      </g>
-      <g class="ring-b" fill="none" stroke="currentColor">
-        <circle cx="100" cy="100" r="64" stroke-width="1.2"/>
-        <circle cx="100" cy="100" r="56" stroke-width="1" stroke-dasharray="3 5"/>
-        <path d="M100 30V170M30 100H170" stroke-width="1"/>
-        <path d="M51 51L149 149M149 51L51 149" stroke-width=".6" opacity=".6"/>
-      </g>
-      <use href="#star" x="64" y="64" width="72" height="72" fill="currentColor"/>
-      <circle cx="100" cy="100" r="5" fill="#1b1511"/>
-    </svg>
     <h1>Abyss Challenge</h1>
-    <p class="sub">A commission from the scholars of the archive. Choose your own party, but abide by the terms.</p>
+    <p class="sub">Random team rules for a Spiral Abyss run. Build your own party, within the rules.</p>
   </header>
 
   <div class="count">
-    <span id="count-label">Terms to draw</span>
+    <span id="count-label">Rules</span>
     <div class="tokens" role="radiogroup" aria-labelledby="count-label" id="count">
       <button role="radio" aria-checked="false" data-n="2">2</button>
       <button role="radio" aria-checked="true" data-n="3">3</button>
@@ -53,7 +35,7 @@
   <ol id="list"></ol>
 
   <div class="actions">
-    <button id="roll" class="btn primary">Draw the terms</button>
+    <button id="roll" class="btn primary">Roll rules</button>
     <button id="copy" class="btn">Copy link</button>
   </div>
 
