@@ -1,9 +1,14 @@
 import { CONSTRAINTS } from './constraints.js';
+import { VALID_TOKENS } from './filters.js';
 
 const groupById = new Map(CONSTRAINTS.map((c) => [c.id, c.group]));
 
-export function encodeRoll(ids) {
-  return ids.length ? `?r=${ids.join(',')}` : '';
+// ?r=<rule ids>&f=<switched-off filter tokens>; either part is omitted when empty.
+export function encodeRoll(ids, off = []) {
+  const parts = [];
+  if (ids.length) parts.push(`r=${ids.join(',')}`);
+  if (off.length) parts.push(`f=${off.join(',')}`);
+  return parts.length ? `?${parts.join('&')}` : '';
 }
 
 // Returns only known ids, no duplicates, no two from the same group.
@@ -19,4 +24,11 @@ export function decodeRoll(search) {
     out.push(id);
   }
   return out;
+}
+
+// Returns only known filter tokens, deduplicated.
+export function decodeFilters(search) {
+  const raw = new URLSearchParams(search).get('f');
+  if (!raw) return [];
+  return [...new Set(raw.split(',').filter((t) => VALID_TOKENS.has(t)))];
 }
