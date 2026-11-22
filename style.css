@@ -11,9 +11,9 @@ h1 { margin: 0 0 8px; font: 400 clamp(1.9rem, 7vw, 3rem)/1.1 var(--font); letter
 .tokens button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #3f5a51; background: none; color: var(--card); font: 400 1rem var(--font); cursor: pointer; }
 .tokens button[aria-checked="true"] { background: var(--card); color: var(--ink); border-color: var(--card); }
 
-ol { list-style: none; margin: 0 0 36px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
 li {
-  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 310px;
+  position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 270px;
   padding: 20px 14px 12px; background: var(--card); color: var(--ink); border-radius: 12px;
   box-shadow: inset 0 0 0 6px var(--card), inset 0 0 0 7px rgba(29, 38, 34, .3), 0 16px 28px -14px rgba(0, 0, 0, .8);
   transition: transform .25s, outline-color .25s; outline: 2px solid transparent; outline-offset: 3px;
@@ -79,3 +79,14 @@ li.reveal { animation: flip .6s ease-out both; animation-delay: calc(var(--i, 0)
 .btn.quiet { padding: 0 18px; border-color: #3f5a51; color: var(--mute); font-size: .85rem; }
 .btn.quiet[aria-pressed="false"] { opacity: .6; }
 @media (max-width: 479px) { .frow { grid-template-columns: 1fr; gap: 4px; } .flabel { padding-top: 0; } }
+
+/* Two halves, one row each */
+.half { margin-bottom: 30px; }
+.half-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.half-head::before, .half-head::after { content: ''; flex: 1; height: 1px; }
+.half-head::before { background: linear-gradient(90deg, transparent, rgba(216, 180, 106, .4)); }
+.half-head::after { background: linear-gradient(270deg, transparent, rgba(216, 180, 106, .4)); }
+.half-head h2 { margin: 0; color: var(--gold); font: 400 .9rem var(--font); letter-spacing: .24em; text-transform: uppercase; }
+.redraw { width: 40px; height: 40px; display: grid; place-items: center; background: none; border: 0; cursor: pointer; color: var(--mute); }
+.redraw:hover { color: var(--gold); }
+.redraw svg { width: 18px; height: 18px; }

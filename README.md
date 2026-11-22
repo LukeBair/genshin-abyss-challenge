@@ -1,8 +1,11 @@
 # Abyss Challenge Roller
 
+Live: https://lukebair.github.io/genshin-abyss-challenge/
+
 Rolls random team-building rules for a self-imposed Genshin Impact Spiral Abyss run. It doesn't build the team; you do, under the rules.
 
-- Draw 2-4 rules, seal the ones you like, redraw single cards.
+- Two rows of rules, one per Abyss half, each with its own seals and redraw.
+- Draw 2-4 rules per half, seal the ones you like, redraw single cards.
 - Filters choose which kinds of rules can appear: rule types, individual elements/weapons/rarities/roles, and limits vs requirements. They're saved in the share link.
 - A soft card-flip sound (synthesised, toggle at the bottom).
 - Rolls never contradict themselves (e.g. "No Pyro" + "Must include Pyro").

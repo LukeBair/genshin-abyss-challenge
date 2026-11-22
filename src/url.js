@@ -2,18 +2,21 @@ import { CONSTRAINTS } from './constraints.js';
 import { VALID_TOKENS } from './filters.js';
 
 const groupById = new Map(CONSTRAINTS.map((c) => [c.id, c.group]));
+const HALF_KEYS = ['r', 's']; // first half, second half
 
-// ?r=<rule ids>&f=<switched-off filter tokens>; either part is omitted when empty.
-export function encodeRoll(ids, off = []) {
+// ?r=<first half ids>&s=<second half ids>&f=<switched-off filter tokens>; empty parts are omitted.
+export function encodeRoll(halves, off = []) {
   const parts = [];
-  if (ids.length) parts.push(`r=${ids.join(',')}`);
+  halves.forEach((ids, i) => {
+    if (ids.length) parts.push(`${HALF_KEYS[i]}=${ids.join(',')}`);
+  });
   if (off.length) parts.push(`f=${off.join(',')}`);
   return parts.length ? `?${parts.join('&')}` : '';
 }
 
-// Returns only known ids, no duplicates, no two from the same group.
-export function decodeRoll(search) {
-  const raw = new URLSearchParams(search).get('r');
+// Returns only known ids for one half, no duplicates, no two from the same group.
+export function decodeRoll(search, key = 'r') {
+  const raw = new URLSearchParams(search).get(key);
   if (!raw) return [];
   const seen = new Set();
   const out = [];

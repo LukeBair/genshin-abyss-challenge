@@ -55,8 +55,12 @@ test('rerollOne changes only its index and respects groups', () => {
 
 test('url round trip and hostile input', () => {
   const ids = ['no-5star', 'need-healer', 'c0-only'];
-  assert.deepEqual(decodeRoll(encodeRoll(ids)), ids);
-  assert.equal(encodeRoll([]), '');
+  assert.deepEqual(decodeRoll(encodeRoll([ids, []])), ids);
+  assert.equal(encodeRoll([[], []]), '');
+  assert.equal(encodeRoll([['no-5star'], ['no-pyro']]), '?r=no-5star&s=no-pyro');
+  assert.deepEqual(decodeRoll('?r=no-5star&s=no-pyro,need-pyro', 's'), ['no-pyro']);
+  assert.deepEqual(decodeRoll('?r=no-5star', 's'), []);
+  assert.deepEqual(decodeRoll('?s=<img src=x onerror=alert(1)>', 's'), []);
   assert.deepEqual(decodeRoll('?r=bogus,no-5star,no-5star'), ['no-5star']);
   assert.deepEqual(decodeRoll('?r=no-pyro,need-pyro'), ['no-pyro']);
   for (const s of ['', '?r=', '?r=%%%', '?x=1', '?r=<img src=x onerror=alert(1)>']) {

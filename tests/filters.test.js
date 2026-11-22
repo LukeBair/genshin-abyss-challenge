@@ -59,9 +59,10 @@ test('locked rule outside the pool is kept', () => {
 });
 
 test('filter tokens round trip; junk is dropped', () => {
-  assert.equal(encodeRoll([], []), '');
-  assert.equal(encodeRoll([], ['pyro']), '?f=pyro');
-  assert.equal(encodeRoll(['no-5star'], ['pyro', 'require']), '?r=no-5star&f=pyro,require');
+  assert.equal(encodeRoll([[], []], []), '');
+  assert.equal(encodeRoll([[], []], ['pyro']), '?f=pyro');
+  assert.equal(encodeRoll([['no-5star'], []], ['pyro', 'require']), '?r=no-5star&f=pyro,require');
+  assert.equal(encodeRoll([['no-5star'], ['no-pyro']], ['require']), '?r=no-5star&s=no-pyro&f=require');
   assert.deepEqual(decodeFilters('?r=no-5star&f=pyro,require'), ['pyro', 'require']);
   assert.deepEqual(decodeFilters('?f=bogus,pyro,pyro'), ['pyro']);
   for (const s of ['', '?f=', '?f=<script>alert(1)</script>', '?x=1']) assert.deepEqual(decodeFilters(s), []);
